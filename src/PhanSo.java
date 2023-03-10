@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class PhanSo {
     private int tuSo;
     public int mauSo;
@@ -13,58 +11,16 @@ public class PhanSo {
         return tuSo;
     }
 
-    public int getMauSo() {
-        return mauSo;
-    }
-
     public void setTuSo(int tuSo) {
         this.tuSo = tuSo;
     }
 
+    public int getMauSo() {
+        return mauSo;
+    }
+
     public void setMauSo(int mauSo) {
         this.mauSo = mauSo;
-    }
-
-    public PhanSo cong(PhanSo ps) {
-        int tuSoMoi = this.tuSo * ps.mauSo + ps.tuSo * this.mauSo;
-        int mauSoMoi = this.mauSo * ps.mauSo;
-        return new PhanSo(tuSoMoi, mauSoMoi).toiGian();
-    }
-
-    public PhanSo tru(PhanSo ps) {
-        int tuSoMoi = this.tuSo * ps.mauSo - ps.tuSo * this.mauSo;
-        int mauSoMoi = this.mauSo * ps.mauSo;
-        return new PhanSo(tuSoMoi, mauSoMoi).toiGian();
-    }
-
-    public PhanSo nhan(PhanSo ps) {
-        int tuSoMoi = this.tuSo * ps.tuSo;
-        int mauSoMoi = this.mauSo * ps.mauSo;
-        return new PhanSo(tuSoMoi, mauSoMoi).toiGian();
-    }
-
-    public PhanSo chia(PhanSo ps) {
-        int tuSoMoi = this.tuSo * ps.mauSo;
-        int mauSoMoi = this.mauSo * ps.tuSo;
-        return new PhanSo(tuSoMoi, mauSoMoi).toiGian();
-    }
-
-    public PhanSo toiGian() {
-        int ucln = timUCLN(this.tuSo, this.mauSo);
-        return new PhanSo(this.tuSo / ucln, this.mauSo / ucln);
-    }
-
-    private int timUCLN(int a, int b) {
-        a = Math.abs(a);
-        b = Math.abs(b);
-        while (a * b != 0) {
-            if (a > b) {
-                a %= b;
-            } else {
-                b %= a;
-            }
-        }
-        return a + b;
     }
 
     @Override
@@ -75,16 +31,60 @@ public class PhanSo {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PhanSo phanSo = (PhanSo) o;
-        return tuSo == phanSo.tuSo && mauSo == phanSo.mauSo;
+    public PhanSo congPhanSo(PhanSo ps) {
+        int mauMoi, tuMoi;
+
+        tuMoi = this.tuSo * ps.mauSo + this.mauSo * ps.tuSo;
+        mauMoi = this.mauSo * ps.mauSo;
+
+        return new PhanSo(tuMoi, mauMoi).toiGianPhanSo(tuMoi , mauMoi) ;
+
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(tuSo, mauSo);
+    public PhanSo truPhanSo(PhanSo ps) {
+        int mauMoi, tuMoi;
+
+        tuMoi = this.tuSo * ps.mauSo - this.mauSo * ps.tuSo;
+        mauMoi = this.mauSo * ps.mauSo;
+
+        return new PhanSo(tuMoi, mauMoi).toiGianPhanSo(tuMoi , mauMoi);
     }
+
+    public PhanSo nhanPhanSo(PhanSo ps) {
+        int mauMoi, tuMoi;
+
+        tuMoi = this.tuSo * ps.tuSo;
+        mauMoi = this.mauSo * ps.mauSo;
+
+        return new PhanSo(tuMoi, mauMoi).toiGianPhanSo(tuMoi , mauMoi);
+    }
+
+    public PhanSo chiaPhanSo(PhanSo ps) {
+        int mauMoi, tuMoi;
+
+        tuMoi = this.tuSo * ps.mauSo;
+        mauMoi = this.mauSo * ps.mauSo;
+
+        return new PhanSo(tuMoi, mauMoi).toiGianPhanSo(tuMoi , mauMoi);
+    }
+
+    public static int timUCLN(int tuSo, int mauSo) { // dung` euclid ??
+        if (mauSo == 0) {
+            return tuSo;
+        } else {
+            return timUCLN(mauSo, tuSo % mauSo);
+        }
+    }
+
+    public PhanSo toiGianPhanSo(int tuSo, int mauSo) {
+        int mauMoi, tuMoi, UCLN;
+        UCLN = timUCLN(tuSo, mauSo);
+
+        tuMoi = this.tuSo / UCLN;
+        mauMoi = this.mauSo / UCLN;
+
+        return new PhanSo(tuMoi, mauMoi);
+    }
+
+
 }

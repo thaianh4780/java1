@@ -1,17 +1,14 @@
 public class test {
     public static void main(String[] args) {
-        PhanSo ps1 = new PhanSo(25,5);
-        PhanSo ps2 = new PhanSo(10,54);
-        PhanSo ps3 = new PhanSo(10,54);
+        PhanSo ps1 = new PhanSo(5,2);
+        PhanSo ps2 = new PhanSo(6,4);
 
-        System.out.println(ps2.getMauSo()) ;
-        System.out.println(ps1.getTuSo());
+        System.out.println(ps2.congPhanSo(ps1));
+        System.out.println(ps2.truPhanSo(ps1));
+        System.out.println(ps2.nhanPhanSo(ps1));
+        System.out.println(ps2.chiaPhanSo(ps1));
 
-        PhanSo phanSo = new PhanSo(30,25);
-        int tuSo = phanSo.getTuSo();
-        System.out.println(tuSo);
 
-        System.out.println( ps2.cong(ps1 ));
-        System.out.println(ps3.equals( ps2) );
+
     }
 }

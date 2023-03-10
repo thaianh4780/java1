@@ -44,6 +44,26 @@ public class Chuong2 {
         return b;
     }
 
+    //bai 2
+    public static String xoaSpace(String strings) {
+        strings = strings.replace(" +", "").trim();
+
+        return strings;
+    }
+
+    public static String layChuDau(String strings) {
+        String[] str = xoaSpace(strings).split(" ");
+        String result = "";
+
+        for (int i = 0; i < str.length; i++) {
+            result += str[i].charAt(0);
+        }
+
+        result = result.toUpperCase();
+
+        return result;
+    }
+
     //bai 3
     public static int tinhTongDaySo(int a) {
         int c = 0;
