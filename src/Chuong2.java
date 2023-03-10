@@ -1,9 +1,14 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Chuong2 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+
+//        tinhBangCuuChuong();
+//        System.out.println(tinhBangCuuChuong(3));
+
 //         try catch dùng để control code lỗi , cụ thể là check lỗi hệ thống
 
 //         có 4 loại lỗi :
@@ -136,7 +141,7 @@ public class Chuong2 {
 
 //        HinhChuNhat hcn1 = new HinhChuNhat(6, 11);
 
-////        bai` 1
+//////        bai` 1
 ////        System.out.println( "nhap vao a : ");
 ////        int a = input.nextInt();
 ////        String b = (a>=2 | a <= 9 ) ? "ngu" : "nice" ;
@@ -144,12 +149,21 @@ public class Chuong2 {
 ////        if (a >= 1 | a<9) {
 //        for (int a = 1; a < 10; a++) { // cau b
 //            for (int i = 1; i <= 10; i++) {
-//                System.out.print(i + " * " + a + " = " + i * a +" | ");
+//                System.out.print(i + " * " + a + " = " + i * a + " | ");
 //            }
 //            System.out.println(); // cau b
 //        }
 ////        }else {
 ////            System.out.println("ngu");
+////        }
+//
+////        public stat Int bai1(int n){
+////            for (int a = 1; a < 10; a++) { // cau b
+////                for (int i = 1; i <= 10; i++) {
+////                    System.out.print(i + " * " + a + " = " + i * a +" | ");
+////                }
+////                System.out.println(); // cau b
+////            }
 ////        }
 
 ////            bai 3
@@ -294,33 +308,135 @@ public class Chuong2 {
 //            System.out.println("16 :"+j + " -> " + e);
 //        }
 
+//        // bai 5
+//        System.out.println("nhap vao` 2 so ");
+//        int f = input.nextInt();
+//        int g = input.nextInt();
+////        Calendar c = Calendar.getInstance();
+//////        Date date = c.getTime();
+//////        System.out.println(c.get(Calendar.MINUTE));
+////        int e = c.get(Calendar.SECOND);
+////        if (e > f | e < g ) {
+////            if ( e<f){
+////                e= ((e*1000)%(f+g));
+////                System.out.println(e);
+////            }
+////            if (e>g ) {
+////                e=e-2*(f+g);
+////            }
+////            else {
+////                System.out.println(e);
+////            }
+////        }
+////        else {
+//////            (e > g) ? e=((f+g)/e): System.out.println("khong ngu ;" + e);
+////            e= (e-(e*80)/100)+(f-g)  ;
+////            System.out.println("ngu ;"+e);
+////        }
+//        Random random = new Random();
+//        int h = random.nextInt(g - f+ 1) + f;
+//        System.out.println(h);
+//        System.out.println(tinhTongDaySo(20));
+//        System.out.println(chuyenThapPhanSangThapLucPhan(10));
+//        System.out.println(chuyenThapPhanSangBatPhan(10));
+//        System.out.println(chuyenThapPhanSangNhiPhan(10));
+//        inBangBiOxHe();
+//        System.out.println(laySoNgauNhienGiua2So(10 ,20));
+    }
 
+    public static String tinhBangCuuChuong(int a) {
+        String b = "";
+        if (a >= 1 | a < 9) {
+            for (a = 1; a < 10; a++) { // cau b
+                for (int i = 1; i <= 10; i++) {
+                    b += (i + " * " + a + " = " + i * a + " | ");
+                }
+                b += "\n";
+            }
+        }
+        return b;
+    }
 
+    public static int tinhTongDaySo(int a) {
+        int c = 0;
+        String b = "";
+        String d = "";
+        int i = (a % 2 == 0) ? 2 : 1;
+        for (; i <= a; i += 2) {
+            b += i + " ";
+            c = c + i;
+        }
+//        d = b +"\n"+ c ;
+//        return d;
+        return c;
+    }
 
+    public static String chuyenThapPhanSangNhiPhan(int dec) {
+        String bin = "";
 
+        while (dec > 0) {
+            bin = (dec % 2) + bin;
+            dec /= 2;
+        }
 
+        return bin;
+    }
 
+    public static String chuyenThapPhanSangThapLucPhan(int dec) {
+        String hex = "";
 
+        for (int i = dec; i > 0; i /= 16) {
+            hex = (i % 16) + hex;
+        }
 
+        return hex;
+    }
 
+    public static String chuyenThapPhanSangBatPhan (int dec) {
+        String oct = "";
 
+        for (int i = dec; i > 0; i /= 8) {
+            oct = (i % 8) + oct;
+        }
 
+        return oct;
+    }
 
+    public static void inBangBiOxHe(){
+        String a ="";
+        for (int i = 1; i <256 ; i++) {
+            System.out.println("");
+            System.out.println("10 : "+ i);
+            System.out.println(" 2 : "+chuyenThapPhanSangNhiPhan(i));
+            System.out.println(" 8 : "+ chuyenThapPhanSangBatPhan(i));
+            System.out.println(" 16 : "+ chuyenThapPhanSangThapLucPhan(i));
+        }
+    }
 
+    public static int laySoNgauNhienGiua2So(int min, int max) {
+        int result ;
+        Random rand = new Random();
 
+        result = rand.nextInt((max - min) + 1) + min ;
 
+        return result ;
+    }
 
+    public static String chuyenDoiSoThanhChu(int decimalNum){
+        String[] romanNumerals = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "L", "C", "D", "M"};
+        int[] decimalValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 50, 100, 500, 1000};
+        String romanNum = "";
 
+        for (int i = decimalValues.length - 1; i >= 0; i--) {
+            int quotient = decimalNum / decimalValues[i];
+            decimalNum %= decimalValues[i];
+            while (quotient > 0) {
+                romanNum += romanNumerals[i];
+                quotient--;
+            }
+        }
 
-
-
-
-
-
-
-
-
-
-
+        return romanNum;
     }
 }
+
