@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.*;
 
 public class Chuong2 {
@@ -27,7 +28,6 @@ public class Chuong2 {
         //bai 11
 
         //bai 12
-
     }
 
     //bai 1
@@ -259,6 +259,12 @@ public class Chuong2 {
                 break;
             }
         }
+    }
+
+    //bai12
+    public static BigInteger tinhBai12(BigInteger a , BigInteger b){
+        BigInteger sum = a.add(b);
+        return  sum ;
     }
 }
 
