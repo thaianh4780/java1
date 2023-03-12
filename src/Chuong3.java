@@ -63,7 +63,7 @@ public class Chuong3 {
                 }
 
                 break;
-            } catch (NumberFormatException e) { 
+            } catch (NumberFormatException e) {
                 System.out.println("nhap ngu");
             } catch (ArithmeticException e) {
                 System.out.println(e.getMessage());
