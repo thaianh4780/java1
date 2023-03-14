@@ -2,55 +2,73 @@ import java.io.*;
 
 public class Chuong_4 {
     public static void main(String[] args) {
-        write("pdf");
-        read("pdf");
+//        write("copy1");
+//        read("copy1");
+        try {
+            copy("copy1", "abc2");
+        } catch (IOException ex) {
+            System.out.println("chongu2" + ex);
+        }
 
+        read("abc2");
     }
 
-    public  static  void  write(String fileName){
+    public static void write(String fileName) {
         try {
             File file = new File(fileName);
-            FileWriter fileWriter = new FileWriter(file) ;
+            FileWriter fileWriter = new FileWriter(file);
 
             fileWriter.write("dmm");
             fileWriter.write("\ndcmm");
             fileWriter.close();
             System.out.println("Done Writing");
-        } catch (IOException ex){
-            System.out.println("loi ghi tap tin" + ex );
+        } catch (IOException ex) {
+            System.out.println("loi ghi tap tin" + ex);
         }
     }
 
-    public static void read(String fileName){
+    public static void read(String fileName) {
         try {
             File file = new File(fileName);
             FileReader fileReader = new FileReader(file);
 
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line ;
-            while ((line = bufferedReader.readLine()) !=null ){
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
 
             bufferedReader.close();
             fileReader.close();
             System.out.println("Done Reading");
-        }catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println("loi doc file" + ex);
         }
     }
 
-    public static  void  copy(String fileName1 , String fileName2 ){
-        FileReader fileReader = null ;
-        FileWriter fileWriter = null ;
 
-        try{
-            fileReader = new FileReader(fileName1);
-            fileWriter = new FileWriter(fileName2);
+    public static void copy(String sourceName, String destName) throws
+            IOException {
+        FileInputStream inputStream = null;
+        FileOutputStream outputStream = null;
 
-            int lap;
-            for ( (int c = in.read(); c != -1; c = in.read()){
-                fileWriter.write(lap);
+        try {
+            inputStream = new FileInputStream(sourceName);
+            outputStream = new FileOutputStream(destName);
+
+            int c;
+            while ((c = inputStream.read()) != -1) {
+                outputStream.write(c);
+            }
+            System.out.println("sao chep thanh cong");
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+                System.out.println("ko co file");
+            }
+            if (outputStream != null) {
+                outputStream.close();
+                System.out.println("ko co file");
             }
         }
     }
