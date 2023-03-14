@@ -3,7 +3,7 @@ public class PhepChia {
     protected double mauSo;
 
 ////    protected String name;
-//    public Animal(String name) {
+//    public demo.Animal(String name) {
 //        this.name = name;
 //    }
 //    public void makeSound() {
