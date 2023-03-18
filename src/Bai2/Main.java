@@ -17,18 +17,32 @@ public class Main {
 //        circles.forEach(System.out::println);
 
 //        for (HinhTron circle : circles) {
-        HinhTron.tinhDienTichTrungBinh();
+//        List<HinhTron> dienTichLonNhat = SLonNhat(hinhTrons);
+        System.out.println("Hinh tron lon nhat"+ HinhTron.SLonNhat(circles));
+        System.out.println("Hinh tron nho nhat"+ HinhTron.SNhoNhat(circles));
+//        HinhTron.tinhDienTichTrungBinh();
 //        }
 
 
+        //sap xep theo S lon nhat
+        Collections.sort(circles, new Comparator<HinhTron>() {
+            @Override
+            public int compare(HinhTron e1, HinhTron e2) {
+                return Double.compare(e1.getArea(), e2.getArea());
+            }
+        });
+        for (HinhTron circle : circles) {
+            System.out.println(circle);
+        }
+
+        //sap xep theo S nho nhat
         Collections.sort(circles, new Comparator<HinhTron>() {
             @Override
             public int compare(HinhTron e1, HinhTron e2) {
 
-                return Double.compare(e1.getArea(), e2.getArea());
+                return Double.compare(e2.getArea(), e1.getArea());
             }
         });
-
         for (HinhTron circle : circles) {
             System.out.println(circle);
         }
