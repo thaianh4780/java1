@@ -51,7 +51,7 @@ public class HinhTron {
         return lastResult;
     }
 
-    public static  List<HinhTron> xapXepSTang (){
+    public static  List<HinhTron> xapXepSTang (List<HinhTron>list){
 
     }
 
