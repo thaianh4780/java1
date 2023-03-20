@@ -3,30 +3,42 @@ package Bai3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CharPosition {
-    private char c;
-    private List<Integer> positions;
+public class  CharPosition{
 
-    public CharPosition(char c, int position) {
-        this.c = c;
-        this.positions = new ArrayList<>();
-        this.positions.add(position);
+    char kiTu ;
+    private List<Integer>  position ;
+
+    public List<Integer> getPosition() {
+        return position;
     }
 
-    public char getChar() {
-        return c;
+    public void setPosition(List<Integer> position) {
+        this.position = position;
     }
 
-    public List<Integer> getPositions() {
-        return positions;
+    public char getKiTu() {
+        return kiTu;
     }
 
-    public void addPosition(int position) {
-        positions.add(position);
+    public void setKiTu(char kiTu) {
+        this.kiTu = kiTu;
+    }
+
+    public CharPosition(int position, char kiTu) {
+        this.position = new ArrayList<>() ;
+        this.position.add(position);
+        this.kiTu = kiTu;
+    }
+
+    public void addPosition(int positions){
+        position.add(positions);
     }
 
     @Override
     public String toString() {
-        return c + "=" + positions;
+        return "CharPosition{" +
+                "position=" + position +
+                ", kiTu=" + kiTu +
+                '}';
     }
 }

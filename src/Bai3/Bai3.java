@@ -19,7 +19,7 @@ public class Bai3 {
             boolean found = false;
 
             for (CharPosition cp : charPositions) {
-                if (cp.getChar() == c) {
+                if (cp.getKiTu() == c) {
                     cp.addPosition(i);
                     System.out.println(" i : "+ i);
                     System.out.println("cp : "+cp);
@@ -28,7 +28,7 @@ public class Bai3 {
                 }
             }
             if (!found) {
-                CharPosition cp = new CharPosition(c, i);
+                CharPosition cp = new CharPosition(i, c);
                 charPositions.add(cp);
             }
         }

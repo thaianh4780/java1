@@ -5,6 +5,7 @@ import java.util.Collections;
 
 public class Deck {
 
+    private ArrayList<Card> cards;
 
     public void setCards(ArrayList<Card> cards) {
         this.cards = cards;
@@ -25,17 +26,11 @@ public class Deck {
                 '}';
     }
 
-    private ArrayList<Card> cards;
-
     public Deck() {
-        String[] suits = {"cơ", "rô", "chuồn", "bích"};
-        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-
         cards = new ArrayList<Card>();
-        for (String suit : suits) {
-            for (String rank : ranks) {
-                Card card = new Card(suit, rank);
-                cards.add(card);
+        for (int i = 0; i < Card.suits.length; i++) {
+            for (int j = 0; j < Card.ranks.length; j++) {
+                cards.add(new Card(i,j));
             }
         }
     }
