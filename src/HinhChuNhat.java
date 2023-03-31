@@ -4,9 +4,12 @@ public class HinhChuNhat {
     private int x;
     private int y;
 
-    public HinhChuNhat(int chieuDai, int chieuRong, int x, int y) {
+    public HinhChuNhat(int chieuDai, int chieuRong, int x, int y) throws IllegalArgumentException {
         this.chieuDai = chieuDai;
         this.chieuRong = chieuRong;
+        if(chieuDai <0 || chieuRong < 0){
+            throw new IllegalArgumentException("tham so ngu");
+        }
         this.x = x;
         this.y = y;
     }
