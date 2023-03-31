@@ -3,48 +3,14 @@ package Bai4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuanLyChuyenXe implements ChuyenXe {
+public class QuanLyChuyenXe {
+
     private List<ChuyenXe> danhSachChuyenXe;
 
-    public QuanLyChuyenXe() {
-        danhSachChuyenXe = new ArrayList<>();
+    public void  themXe(ChuyenXe chuyenXe){
+        danhSachChuyenXe.add(chuyenXe);
     }
 
-    @Override
-    public String getMaSoChuyen() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String getHoTenTaiXe() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Integer getSoXe() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String getLoaiChuyenXe() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public double getDoanhThu() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public double tinhTienThuong(double tyLeThuong) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
 
     // Tìm xe có tổng doanh thu cao nhất
     public ChuyenXe timXeCoTongDoanhThuCaoNhat() {
@@ -80,7 +46,7 @@ public class QuanLyChuyenXe implements ChuyenXe {
 
         for (ChuyenXe chuyenXe : danhSachChuyenXe) {
             if (chuyenXe.getLoaiChuyenXe().equals(loaiChuyenXe)) {
-                double tienThuong = chuyenXe.tinhTienThuong(tyLeThuong);
+                double tienThuong = chuyenXe.tinhTienThuong();
                 tongTienThuong += tienThuong;
             }
         }
@@ -103,20 +69,5 @@ public class QuanLyChuyenXe implements ChuyenXe {
     public QuanLyChuyenXe(List<ChuyenXe> danhSachChuyenXe) {
         this.danhSachChuyenXe = danhSachChuyenXe;
     }
-    double tongTienThuong = 0;
-//    if (.equals("noi thanh")) {
-//        for (ChuyenXe cx : danhSachChuyenXe) {
-//            if (cx instanceof ChuyenXeNoiThanh) {
-//                tongTienThuong += cx.tinhTienThuong();
-//            }
-//        }
-//    } else if (loai.equals("ngoai thanh")) {
-//        for (ChuyenXe cx : danhSachChuyenXe) {
-//            if (cx instanceof ChuyenXeNgoaiThanh) {
-//                tongTienThuong += cx.tinhTienThuong();
-//            }
-//        }
-//    }
-//    return tongTienThuong;
 }
 

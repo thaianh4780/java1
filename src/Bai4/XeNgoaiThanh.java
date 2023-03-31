@@ -3,50 +3,18 @@ package Bai4;
 public class XeNgoaiThanh implements ChuyenXe {
     private String maSoChuyen;
     private String hoTenTaiXe;
-    private Integer soXe;
-    private String noiDen;
-    private int soNgayDi;
     private double doanhThu;
+    private int soXe;
+    private String noiDen;
+    private int soNgayDiDuoc;
 
-    public XeNgoaiThanh(String maSoChuyen, String hoTenTaiXe, Integer soXe, String noiDen, int soNgayDi, double doanhThu) {
+    public XeNgoaiThanh(String maSoChuyen, String hoTenTaiXe, double doanhThu, int soXe, String noiDen, int soNgayDiDuoc) {
         this.maSoChuyen = maSoChuyen;
         this.hoTenTaiXe = hoTenTaiXe;
+        this.doanhThu = doanhThu;
         this.soXe = soXe;
         this.noiDen = noiDen;
-        this.soNgayDi = soNgayDi;
-        this.doanhThu = doanhThu;
-    }
-
-    @Override
-    public String getMaSoChuyen() {
-        return maSoChuyen;
-    }
-
-    public void setMaSoChuyen(String maSoChuyen) {
-        this.maSoChuyen = maSoChuyen;
-    }
-
-    @Override
-    public String getHoTenTaiXe() {
-        return hoTenTaiXe;
-    }
-
-    public void setHoTenTaiXe(String hoTenTaiXe) {
-        this.hoTenTaiXe = hoTenTaiXe;
-    }
-
-    @Override
-    public Integer getSoXe() {
-        return soXe;
-    }
-
-    @Override
-    public String getLoaiChuyenXe() {
-        return null;
-    }
-
-    public void setSoXe(Integer soXe) {
-        this.soXe = soXe;
+        this.soNgayDiDuoc = soNgayDiDuoc;
     }
 
     public String getNoiDen() {
@@ -57,12 +25,32 @@ public class XeNgoaiThanh implements ChuyenXe {
         this.noiDen = noiDen;
     }
 
-    public int getSoNgayDi() {
-        return soNgayDi;
+    public int getSoNgayDiDuoc() {
+        return soNgayDiDuoc;
     }
 
-    public void setSoNgayDi(int soNgayDi) {
-        this.soNgayDi = soNgayDi;
+    public void setSoNgayDiDuoc(int soNgayDiDuoc) {
+        this.soNgayDiDuoc = soNgayDiDuoc;
+    }
+
+    @Override
+    public String getMaSoChuyen() {
+        return maSoChuyen;
+    }
+
+    @Override
+    public String getHoTenTaiXe() {
+        return hoTenTaiXe;
+    }
+
+    @Override
+    public Integer getSoXe() {
+        return soXe;
+    }
+
+    @Override
+    public String getLoaiChuyenXe() {
+        return "Ngoại thành";
     }
 
     @Override
@@ -71,12 +59,13 @@ public class XeNgoaiThanh implements ChuyenXe {
     }
 
     @Override
-    public double tinhTienThuong(double tyLeThuong) {
-        return doanhThu*tyLeThuong;
+    public double tinhTienThuong(){
+        double tienThuong = doanhThu*0.05;
+        return tienThuong;
     }
 
-
-    public void setDoanhThu(double doanhThu) {
-        this.doanhThu = doanhThu;
+    @Override
+    public String toString() {
+        return super.toString() + ", Nơi đến: " + noiDen + ", Số ngày đi được: " + soNgayDiDuoc;
     }
 }

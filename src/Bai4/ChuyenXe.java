@@ -1,21 +1,15 @@
 package Bai4;
 
 public interface ChuyenXe {
-    // Trả về mã số chuyến xe
-    public String getMaSoChuyen();
+    String getMaSoChuyen();
 
-    // Trả về họ tên tài xế
-    public String getHoTenTaiXe();
+    String getHoTenTaiXe();
 
-    // Trả về số xe
-    public Integer getSoXe();
+    Integer getSoXe();
 
-    // Trả về loại chuyến xe (nội thành hoặc ngoại thành)
-    public String getLoaiChuyenXe();
+    String getLoaiChuyenXe();
 
-    // Trả về doanh thu của chuyến xe
-    public double getDoanhThu();
+    double getDoanhThu();
 
-    // Tính tiền thưởng của chuyến xe theo tỷ lệ % cho trước
-    public double tinhTienThuong(double tyLeThuong);
+    double tinhTienThuong();
 }

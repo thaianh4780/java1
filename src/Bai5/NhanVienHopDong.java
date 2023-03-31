@@ -47,9 +47,12 @@ public class NhanVienHopDong extends NhanVien {
                 '}';
     }
 
+    @Override
     public double tinhLuong() {
-        double luong = (gioTangCa == 0) ? mucLuongCoBan * (soNgayCong / 30) : (mucLuongCoBan * (soNgayCong / 30)) + gioTangCa * 60_000;
-
+        double luong = mucLuongCoBan * soNgayCong / 30;
+        if (gioTangCa > 0) {
+            luong += gioTangCa * 60000;
+        }
         return luong;
     }
 

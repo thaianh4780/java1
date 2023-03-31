@@ -1,6 +1,6 @@
 package Bai5;
 
-public class NhanVien {
+public abstract class NhanVien implements Luong {
     private String maSo;
     private String hoTen;
 
@@ -23,9 +23,5 @@ public class NhanVien {
 
     public void setHoTen(String hoTen) {
         this.hoTen = hoTen;
-    }
-
-    public double tinhLuong() {
-        return 0;
     }
 }

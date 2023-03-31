@@ -36,7 +36,10 @@ public class NhanVienChinhThuc extends NhanVien {
 
     @Override
     public double tinhLuong() {
-        double luong =(gioTangCa == 0) ? heSoLuong * 1_150_000 : ((heSoLuong * 1_150_000)+(gioTangCa*60_000)) ;
+        double luong = heSoLuong * 1150000;
+        if (gioTangCa > 0) {
+            luong += gioTangCa * 60000;
+        }
         return luong;
     }
 }
