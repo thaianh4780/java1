@@ -1,2 +1,11 @@
-package OnTap;public class Test {
+package OnTap;
+
+import static org.junit.Assert.assertTrue;
+
+public class Test {
+
+    @org.junit.Test
+    public void demoTestMethod() {
+        assertTrue(false);
+    }
 }

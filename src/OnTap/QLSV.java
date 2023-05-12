@@ -1,9 +1,11 @@
 package OnTap;
 
 import java.io.*;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.List;
 
-public class QLSV implements Serializable {
+public class QLSV implements Serializable, IQLSV {
     private ArrayList<SinhVien> danhSachSV;
 
     public QLSV(ArrayList<SinhVien> danhSachSV) {
@@ -14,8 +16,13 @@ public class QLSV implements Serializable {
         this.danhSachSV = new ArrayList<SinhVien>();
     }
 
-    public  void themSV(SinhVien sv) {
+    public void themSV(SinhVien sv) {
         danhSachSV.add(sv);
+        String fileName = "thang1";
+        ArrayList<SinhVien> dssv = docGL(fileName);
+
+        dssv.add(sv);
+        ghiGL(fileName, dssv);
 
     }
 
@@ -45,7 +52,7 @@ public class QLSV implements Serializable {
         }
     }
 
-    public  void ghiGL(String tenFile, ArrayList<SinhVien> dssv) {
+    public void ghiGL(String tenFile, ArrayList<SinhVien> dssv) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(tenFile);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -62,7 +69,7 @@ public class QLSV implements Serializable {
 
     }
 
-    public  ArrayList<SinhVien> docGL(String tenFile) {
+    public ArrayList<SinhVien> docGL(String tenFile) {
 
         ArrayList<SinhVien> dsSV = new ArrayList<SinhVien>();
 
@@ -78,30 +85,54 @@ public class QLSV implements Serializable {
             fileInputStream.close();
             objectInputStream.close();
 
-            System.out.println("done reac");
+            System.out.println("done read");
 
 
         } catch (Exception e) {
             System.out.println(e);
         }
 
-        return  dsSV ;
-    }
-
-    public static void main(String[] args) {
-//        QLSV qlsv = new QLSV();
-//        ArrayList<SinhVien> dsSinhViens = new ArrayList<SinhVien>();
-//        dsSinhViens.add(new SinhVien(1, "Nguyen Van A", 2002));
-////        ghiGL("dmthang1", dsSinhViens);
-////         docGL("dmthang1");
-//        qlsv.themSV(new SinhVien(2,"ha minh thang",2001));
-////        System.out.println(qlsv.toString());
-//
-////        for (SinhVien sv : qlsv.danhSachSV){
-////            System.out.println(sv);
-////        }
-//        System.out.println(qlsv.toString());
+        return dsSV;
     }
 
 
+    @Override
+    public List<SinhVien> timSV23Tuoi() {
+        List<SinhVien> dssv = docGL("thang1");
+        List<SinhVien> svs = new ArrayList<>();
+
+        int year = Year.now().getValue();
+
+        for (SinhVien sv : dssv) {
+            if ((year - sv.getNamSinh()) >= 23) {
+                svs.add(sv);
+            }
+        }
+
+        return svs;
+    }
+
+    @Override
+    public List<SinhVien> sapXepSinhVien() {
+        List<SinhVien> dssv = docGL("thang1");
+
+        for (int i = 0; i < dssv.size(); i++) {
+            for (int j = i + 1; j < dssv.size(); j++) {
+                if (dssv.get(i).getNamSinh() > dssv.get(j).getNamSinh()) {
+                    SinhVien temp = dssv.get(i);
+                    dssv.set(i, dssv.get(j));
+                    dssv.set(j, temp);
+                }
+                if (dssv.get(i).getNamSinh() == dssv.get(j).getNamSinh()) {
+                    if (dssv.get(i).getTenSV().compareTo(dssv.get(j).getTenSV()) > 0) {
+                        SinhVien temp = dssv.get(i);
+                        dssv.set(i, dssv.get(j));
+                        dssv.set(j, temp);
+                    }
+                }
+            }
+        }
+
+        return dssv;
+    }
 }
